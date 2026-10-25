@@ -1,3 +1,4 @@
+const dns = require("dns");
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
@@ -8,6 +9,14 @@ const connectDB = async () => {
     if (!mongoUri) {
       console.warn("MongoDB connection skipped because MONGODB_URL / MONGODB_URI is not configured.");
       return;
+    }
+
+    if (mongoUri.startsWith("mongodb+srv://")) {
+      try {
+        dns.setServers(["8.8.8.8", "8.8.4.4"]);
+      } catch (dnsErr) {
+        // Fallback silently if setting custom DNS servers is not allowed
+      }
     }
 
     await mongoose.connect(mongoUri);

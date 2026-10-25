@@ -1,13 +1,12 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
-const dotenv = require("dotenv");
-const helmet = require("helmet");
 const morgan = require("morgan");
 const passport = require("./config/passport");
-
-dotenv.config();
 
 // Route Imports
 const connectDB = require("./config/db");
@@ -47,21 +46,6 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
-
-// 1. Connect to Database
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
-const MONGODB_URI = process.env.MONGODB_URL;
-
-if (!MONGODB_URI) {
-  console.error("CRITICAL ERROR: MONGODB_URL is not defined in the environment variables!");
-}
-
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log("Database connected successfully!"))
-  .catch((err) => console.error("Database connection failure:", err));
 
 // Application Endpoints
 app.use('/api/auth', authRoutes);

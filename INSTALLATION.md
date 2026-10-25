@@ -28,7 +28,7 @@ npm install
 ```
 * **For Frontend:**
 ```
-cd client
+cd frontend
 npm install
 cd ..
 ```
@@ -65,7 +65,7 @@ nodemon app.js
 ```
 * **Terminal 2: Frontend**
 ```
-cd client
+cd frontend
 npm run dev
 ```
 The application should now be accessible at: `http://localhost:5173` (Vite default) or `http://localhost:3000`.
