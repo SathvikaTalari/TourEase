@@ -101,11 +101,9 @@ function AppRoutes() {
             <Route path="/plan-trip" element={<PageTransition><PlanTrip /></PageTransition>} />
             <Route path="/dynamic-planner" element={<PageTransition><DynamicPlannerPage /></PageTransition>} />
             <Route path="/oauth-success" element={<PageTransition><OAuthSuccess /></PageTransition>} />
-            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
             <Route path="/trip-planner" element={<PageTransition><TripPlanner /></PageTransition>} />
-            <Route path="/smart-trip-planner" element={<PageTransition><SmartTripPlanner /></PageTransition>} /> feat/travel-locker
+            <Route path="/smart-trip-planner" element={<PageTransition><SmartTripPlanner /></PageTransition>} />
             <Route path="/mood-planner" element={<PageTransition><MoodPlanner /></PageTransition>} />
-            main
             <Route
               path="/split-expense"
               element={
@@ -126,6 +124,7 @@ function AppRoutes() {
               path="/currency-converter"
               element={<PageTransition><CurrencyConverter /></PageTransition>}
             />
+            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
           </Routes>
         </AnimatePresence>
       </div>
